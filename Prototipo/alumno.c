@@ -34,6 +34,7 @@ eAlumno cargarAlumno(eLocalidad arrayLocalidad[],int lengLocalidad)
     borrar();
     getValidInt("Ingrese el Promedio:","promedio, Solo Numeros",0,10,&auxAlumno.promedio);
     borrar();
+
     unaLocalidad=una_localidad(arrayLocalidad,lengLocalidad);
     auxAlumno.idLocalidad=unaLocalidad.id;
 
@@ -72,6 +73,7 @@ int agregarAlumno(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLoc
         id_1=*id_beta;
         listadoDeAlumnos[indice] = cargarAlumno(arrayLocalidad,lengLocalidad);
         listadoDeAlumnos[indice].legajo=id_1;
+        borrar();
         localidad=buscarLocalidadId(arrayLocalidad,lengLocalidad,listadoDeAlumnos[indice].idLocalidad);
         mostrarUnAlumno(listadoDeAlumnos[indice],arrayLocalidad[localidad]);
 
@@ -104,7 +106,7 @@ void hardCodearAlumnos(eAlumno listadoDeAlumnos[], int tam,int* id)
     float promedio[]= {6.66, 4,7.66,10.00,7.80,1,5,6,9,3};
     char nombre[][25]= {"Juan","Maria josefina","Maria","Flopy","Luca","Lucia","Alan","German","Brian","Pedro"};
     char apellido[][25]= {"Perez","Fernandez","Serrano","Gonzalez","Lodola","Morel","Passu","Villegas","Gonzalez","PepePoopPoop"};
-    int localidad[]= {101,103,102,101,103,103,103,102,103,103};
+    int localidad[]= {101,103,102,101,101,103,103,102,101,103};
     for(i=0; i<tam; i++)
     {
         listadoDeAlumnos[i].legajo = id_1;
@@ -147,7 +149,7 @@ void mostrarListadoAlumnos(eAlumno listadoDeAlumnos[], int tam,eLocalidad listaL
     printf("\n");
 }
 
-void submenu_Mostrar(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad)
+void submenu_Mostrar(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayDeContador[],int lengContador)
 {
 
     int opcion;
@@ -156,7 +158,7 @@ void submenu_Mostrar(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad array
     do
     {
         printf("%30s\n","SUB MENU MOSTRAR");
-        getValidInt("1. Mostrar todos los alumnos con la descripcion de su localidad\n2. Mostrar todas las localidades\n3. Mostrar por cada localidad, todos los alumnos que viven en ella\n4. Mostrar los alumnos que viven en Avellaneda\n5. Mostrar la localidad con menos habitantes\n6. Salir al menu\nElija una opcion: ",
+        getValidInt("1. Mostrar todos los alumnos con la descripcion de su localidad\n2. Mostrar todas las localidades\n3. Mostrar por cada localidad, todos los alumnos que viven en ella\n4. Mostrar los alumnos que viven en Avellaneda\n5. Mostrar la localidad con habitantes\n6. Salir al menu\nElija una opcion: ",
                     "Error. Solo numeros, Elija las opciones correspodientes.",1,6,&opcion);
 
         switch(opcion)
@@ -184,7 +186,7 @@ void submenu_Mostrar(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad array
             break;
         case 5:
             borrar();
-
+            contarAlumnos(listadoDeAlumnos,lengAlumnos,arrayLocalidad,lengLocalidad,arrayDeContador,lengContador);
             pausa();
             break;
         }
@@ -198,13 +200,10 @@ int eliminarAlumno(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaLocalida
     int legajo;
     int i;
     int index;
-    char respuesta;
-
-    int quePaso = -1;
+    int respuesta=-1;
     mostrarListadoAlumnos(listadoDeAlumnos,tam,listaLocalidad,lenLocal);
 
-    printf("Ingrese el legajo: ");
-    scanf("%d", &legajo);
+    legajo=getInt("Ingrese el legajo:");
 
     for(i=0; i<tam; i++)
     {
@@ -212,27 +211,22 @@ int eliminarAlumno(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaLocalida
         if(listadoDeAlumnos[i].legajo==legajo && listadoDeAlumnos[i].estado==OCUPADO)
         {
             index  = buscarLocalidadId(listaLocalidad,lenLocal,listadoDeAlumnos[i].idLocalidad);
+            borrar();
             mostrarUnAlumno(listadoDeAlumnos[i],listaLocalidad[index]);
 
-            //printf("Esta seguro que desea eliminar este alumno? :");
-            //respuesta = getche();
-            getValidString("Esta seguro que desea eliminar este alumno? :","Error, solo letra [S/N]",0,1,&respuesta);
+            respuesta=verifyConformity("Esta seguro que desea eliminar este alumno?[Si/No]:","Error, solo letra [Si/No]");
 
-            if(respuesta=='S')
+            if(respuesta==1)
             {
                 listadoDeAlumnos[i].estado = LIBRE;
-                quePaso = 1;
+
             }
-            else
-            {
-                quePaso = 0;
-            }
-            break;
+
         }
 
     }
 
-    return quePaso;
+    return respuesta;
 
 }
 void mostrar_AlumnoLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad)
@@ -240,11 +234,13 @@ void mostrar_AlumnoLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalid
     int i;
     for(i=0; i<lengAlumnos; i++)
     {
-
-        if(arrayLocalidad[lengLocalidad].id==listadoDeAlumnos[i].idLocalidad)
+        if(listadoDeAlumnos[i].estado==OCUPADO)
         {
-            mostrarUnAlumno(listadoDeAlumnos[i],arrayLocalidad[lengLocalidad]);
+            if(arrayLocalidad[lengLocalidad].id==listadoDeAlumnos[i].idLocalidad)
+            {
+                mostrarUnAlumno(listadoDeAlumnos[i],arrayLocalidad[lengLocalidad]);
 
+            }
         }
     }
 
@@ -253,18 +249,12 @@ void mostrar_AlumnoLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalid
 void mostrar_porLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad)
 {
     int i;
-
     for(i=0; i<lengLocalidad; i++)
     {
-
         printf("%30s\n",arrayLocalidad[i].descripcion);
-
         mostrar_AlumnoLocalidad(listadoDeAlumnos,lengAlumnos,arrayLocalidad,i);
-
         printf("\n\n");
     }
-
-
 }
 void mostrar_SoloAvellaneda(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad)
 {
@@ -291,6 +281,9 @@ void sortStudentsByNameAndAverage(eAlumno listadoDeAlumnos[], int tam)
     int j;
     eAlumno auxAlumno;
 
+    printf("Ordenando alumnos...\n");
+
+    pausa();
     for(i=0; i<tam-1; i++)
     {
         for(j=i+1; j<tam; j++)
@@ -317,6 +310,9 @@ void sortStudentsByNameAndAverage(eAlumno listadoDeAlumnos[], int tam)
         }
 
     }
+    borrar();
+    printf("Alumnos Ordenados.\n");
+
 }
 
 int verifyConformity (char message[], char cancelMessage[])
@@ -324,10 +320,6 @@ int verifyConformity (char message[], char cancelMessage[])
     int save=0; //bandera que avisa si el usuario desea guardar los datos ingresados
     char answer[2]; //respuesta del usuario
     int respuesta;
-    /*printf("\n%s ingresado es correcto? (Si/No) \n", message);
-    fflush(stdin);
-    scanf("%s", answer);*/
-
 
     getValidString(message,cancelMessage,2,2,answer);
     respuesta=strcmp(answer,"Si");
@@ -337,11 +329,46 @@ int verifyConformity (char message[], char cancelMessage[])
 
         save=1;
     }
-
-
     return save;
+}
+
+void cantidadAlumnosPorLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayContador[])
+{
+    int i,j;
+
+    for(i=0; i<lengLocalidad; i++)
+    {
+        for(j=0; j<lengAlumnos; j++)
+        {
+            if(listadoDeAlumnos[j].estado==OCUPADO)
+            {
+                if(listadoDeAlumnos[j].idLocalidad==arrayLocalidad[i].id)//verificar el estado
+                {
+
+                    arrayContador[i].contadorAlumnos++;
+
+                }
+            }
+        }
+    }
+}
+
+void contarAlumnos(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayContador[],int lenContador)
+{
+    int respuesta;
+    int i;
+    cantidadAlumnosPorLocalidad(listadoDeAlumnos,lengAlumnos,arrayLocalidad,lengLocalidad,arrayContador);
+    getValidInt("1-Obtener el minimo\n2-Obtener el maximo\nElija una opcion: ","Error, solo numeros.",1,2,&respuesta);
+    for(i=0; i<lengAlumnos; i++)
+    {
+        if(listadoDeAlumnos[i].estado==OCUPADO)
+        {
+            mostrar_Contador(arrayContador,lenContador,arrayLocalidad,lengLocalidad,respuesta);
+        }
+    }
 
 }
+
 void pausa()
 {
     //if(sysOp==1)

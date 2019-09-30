@@ -12,7 +12,7 @@ typedef struct
     int idLocalidad;
     int estado;
 
-}eAlumno;
+} eAlumno;
 
 void inicializar_Alumnos(eAlumno listadoDeAlumnos[],int lengAlumnos);
 eAlumno cargarAlumno(eLocalidad arrayLocalidad[], int lengLocalidad);
@@ -24,13 +24,17 @@ void mostrarListadoAlumnos(eAlumno listadoDeAlumnos[], int tam, eLocalidad lista
 void sortStudentsByNameAndAverage(eAlumno listadoDeAlumnos[], int tam);
 int eliminarAlumno(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaLocalidad[], int lenLocal);
 
-void submenu_Mostrar(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad);
+void submenu_Mostrar(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayDeContador[],int lengContador);
 void mostrar_porLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad);
 void mostrar_AlumnoLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad);
 
 void mostrar_SoloAvellaneda(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad);
 
 int verifyConformity (char message[], char cancelMessage[]);
+
+//void contador_AlumnosLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayContador[],int lenContador);
+void contarAlumnos(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayContador[],int lenContador);
+void cantidadAlumnosPorLocalidad(eAlumno listadoDeAlumnos[],int lengAlumnos,eLocalidad arrayLocalidad[],int lengLocalidad,eContador arrayContador[]);
 
 void pausa();
 void borrar();

@@ -13,8 +13,9 @@
 
 int main()
 {
-    eLocalidad listaDelocalidades[LL];//={{100,"Avellaneda",1864},{101,"Wilde",1863},{102,"Lomas de Zamora",1803}};
+    eLocalidad listaDelocalidades[LL];
     eAlumno listaDeAlumnos[LA];
+    eContador listaDeContador[LL];
     int id_beta=1000;
     int opcion;
     int respuesta;
@@ -22,22 +23,11 @@ int main()
     inicializar_Alumnos(listaDeAlumnos,LA);
 
     hardcode_Localidad(listaDelocalidades,LL);
-    hardCodearAlumnos(listaDeAlumnos,10,&id_beta);
-
-
-    /*printf("\n\n%d\n\n",id_beta);
-    id_beta=agregarAlumno(listaDeAlumnos,LA,listaDelocalidades,LL,id_beta);
-    printf("\n\n%d\n\n",id_beta);
-    //id_beta=agregarAlumno(listaDeAlumnos,LA,listaDelocalidades,LL,id_beta);
-    submenu_Mostrar(listaDeAlumnos,LA,listaDelocalidades,LL);*/
+    hardCodearAlumnos(listaDeAlumnos,9,&id_beta);
+    hardcode_Contador(listaDeContador,LL,listaDelocalidades);
 
     do
     {
-
-        //printf("1.Cargar\n2.Mostrar\n3.Ordenar\n4.Eliminar\n5.Modificar\n7.Salir\n");
-        //printf("Elija una opcion: ");
-        //scanf("%d", &opcion)
-
         getValidInt("1.Cargar\n2.Mostrar\n3.Ordenar\n4.Eliminar\n5.Modificar\n7.Salir\nElija una opcion: ","Error, solo numeros[1-7]",1,7,&opcion);
 
         switch(opcion)
@@ -61,7 +51,7 @@ int main()
             break;
         case 2:
             borrar();
-            submenu_Mostrar(listaDeAlumnos,LA,listaDelocalidades,LL);
+            submenu_Mostrar(listaDeAlumnos,LA,listaDelocalidades,LL,listaDeContador,LL);
             pausa();
             break;
         case 3:
@@ -75,19 +65,25 @@ int main()
             switch(respuesta)
             {
             case 0:
+                borrar();
                 printf("Accion cancelada por el usuario\n");
+                pausa();
                 break;
             case 1:
+                borrar();
                 printf("Alumno eliminado\n");
+                pausa();
                 break;
             case -1:
+                borrar();
                 printf("Dato no encontrado\n");
+                pausa();
                 break;
             }
 
             break;
         case 5:
-
+            /*
             respuesta = modificarAlumno(listaDeAlumnos,A,102);
             switch(respuesta)
             {
@@ -100,17 +96,12 @@ int main()
             case -1:
                 printf("Dato no encontrado\n");
                 break;
-            }
+            }*/
             break;
         }
         borrar();
     }
     while(opcion!=7);
-
-
-
-
-
 
     return 0;
 }

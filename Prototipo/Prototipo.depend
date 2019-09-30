@@ -151,3 +151,39 @@
 	"Local.h"
 	"alumno.h"
 
+1569880505 source:/home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/alumno.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569869715 /home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/inputs.h
+
+1569875396 /home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/Local.h
+
+1569875396 /home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/alumno.h
+
+1569877513 source:/home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"inputs.h"
+
+1569879689 source:/home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/main.c
+	<stdio.h>
+	<stdlib.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569880505 source:/home/tomas/Escritorio/progLabo1/Clase_11/Prototipo/Local.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+

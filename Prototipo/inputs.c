@@ -195,7 +195,6 @@ void getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hi
         if(*input < lowLimit || *input > hiLimit)
         {
             printf ("El numero del debe ser mayor a %d y menor a %d\n",lowLimit,hiLimit);
-
             continue;
         }
         break;
@@ -253,21 +252,21 @@ void getValidString(char requestMessage[],char errorMessage[],int lowLimit, int 
 
 void firstToUpper(char name[])
 {
-stringToLower(name);
+    stringToLower(name);
 
-name[0] = toupper(name[0]);
-int j=0;
+    name[0] = toupper(name[0]);
+    int j=0;
 
-while(name[j]!='\0')
-{
-
-    if(name[j]==' ')
+    while(name[j]!='\0')
     {
-        name[j+1]= toupper (name[j+1]);
 
+        if(name[j]==' ')
+        {
+            name[j+1]= toupper (name[j+1]);
+
+        }
+        j++;
     }
-    j++;
-}
 }
 void stringToUpper (char letters[])
 {
@@ -275,7 +274,7 @@ void stringToUpper (char letters[])
 
     for (i=0; letters[i] != '\0'; i++)
     {
-    letters[i] = toupper(letters[i]);
+        letters[i] = toupper(letters[i]);
     }
 }
 
@@ -285,6 +284,6 @@ void stringToLower (char letters[])
 
     for (i=0; letters[i] != '\0'; i++)
     {
-    letters[i] = tolower(letters[i]);
+        letters[i] = tolower(letters[i]);
     }
 }
