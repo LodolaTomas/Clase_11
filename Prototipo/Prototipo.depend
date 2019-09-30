@@ -1,0 +1,153 @@
+# depslib dependency file v1.0
+1569589562 source:/home/tomas/Escritorio/Prototipo/main.c
+	<stdio.h>
+	<stdlib.h>
+	"inputs.h"
+	"alumno.h"
+
+1569551122 source:/home/tomas/Escritorio/Prototipo/inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"inputs.h"
+
+1569589295 source:/home/tomas/Escritorio/Prototipo/alumno.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"alumno.h"
+
+1569550964 /home/tomas/Escritorio/Prototipo/inputs.h
+
+1569589369 /home/tomas/Escritorio/Prototipo/alumno.h
+	"Local.h"
+
+1569589144 /home/tomas/Escritorio/Prototipo/localidad.h
+
+1569555955 source:/home/tomas/Escritorio/Prototipo/localidad.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"localidad.h"
+
+1569589342 source:/home/tomas/Escritorio/Prototipo/Local.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+
+1569589230 /home/tomas/Escritorio/Prototipo/Local.h
+
+1569608789 source:/home/tomas/Escritorio/progLabo1/Prototipo/alumno.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569550964 /home/tomas/Escritorio/progLabo1/Prototipo/inputs.h
+
+1569608789 /home/tomas/Escritorio/progLabo1/Prototipo/alumno.h
+
+1569608789 /home/tomas/Escritorio/progLabo1/Prototipo/Local.h
+
+1569551122 source:/home/tomas/Escritorio/progLabo1/Prototipo/inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"inputs.h"
+
+1569608789 source:/home/tomas/Escritorio/progLabo1/Prototipo/Local.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+
+1569621410 source:/home/tomas/Escritorio/progLabo1/Prototipo/main.c
+	<stdio.h>
+	<stdlib.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569808796 source:/home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/alumno.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569801951 /home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/inputs.h
+
+1569804876 /home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/Local.h
+
+1569808779 /home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/alumno.h
+
+1569808992 source:/home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"inputs.h"
+
+1569608789 source:/home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/Local.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+
+1569808779 source:/home/tomas/Escritorio/ABM-ParaPrueba/Prototipo/main.c
+	<stdio.h>
+	<stdlib.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569854411 source:/home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/alumno.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
+1569844663 /home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/inputs.h
+
+1569856944 /home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/Local.h
+
+1569852756 /home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/alumno.h
+
+1569844663 source:/home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"inputs.h"
+
+1569852329 source:/home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/Local.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"inputs.h"
+	"Local.h"
+
+1569854361 source:/home/alumno/Escritorio/ABM-ParaPrueba/Prototipo/main.c
+	<stdio.h>
+	<stdlib.h>
+	"inputs.h"
+	"Local.h"
+	"alumno.h"
+
